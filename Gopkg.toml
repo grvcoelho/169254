@@ -25,6 +25,10 @@
 #   unused-packages = true
 
 
+[[constraint]]
+  name = "github.com/kataras/iris"
+  version = "10.6.3"
+
 [prune]
   go-tests = true
   unused-packages = true
