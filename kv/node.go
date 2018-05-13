@@ -28,7 +28,12 @@ func (n *Node) Put(key string, value interface{}) error {
 	}
 
 	newKey := strings.Join(keys[1:], "/")
-	child, _ := NewNode(nil)
+	child, ok := n.Get(keys[0])
+
+	if !ok {
+		child, _ = NewNode(nil)
+	}
+
 	n.Children[keys[0]] = child
 
 	return child.Put(newKey, value)
