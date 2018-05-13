@@ -10,18 +10,18 @@ type Node struct {
 	Children map[string]*Node
 }
 
-func NewNode(value interface{}) (*Node, error) {
+func NewNode(value interface{}) *Node {
 	return &Node{
 		Value:    value,
 		Children: make(map[string]*Node),
-	}, nil
+	}
 }
 
 func (n *Node) Put(key string, value interface{}) error {
 	keys := strings.Split(key, "/")
 
 	if len(keys) == 1 {
-		child, _ := NewNode(value)
+		child := NewNode(value)
 		n.Children[keys[0]] = child
 
 		return nil
@@ -31,7 +31,7 @@ func (n *Node) Put(key string, value interface{}) error {
 	child, ok := n.Get(keys[0])
 
 	if !ok {
-		child, _ = NewNode(nil)
+		child = NewNode(nil)
 	}
 
 	n.Children[keys[0]] = child

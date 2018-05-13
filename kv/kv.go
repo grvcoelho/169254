@@ -4,12 +4,12 @@ type KVStore struct {
 	Root *Node
 }
 
-func NewKVStore() (*KVStore, error) {
-	root, _ := NewNode(nil)
+func NewKVStore() *KVStore {
+	root := NewNode(nil)
 
 	return &KVStore{
 		Root: root,
-	}, nil
+	}
 }
 
 func (s *KVStore) Put(key, value string) error {
