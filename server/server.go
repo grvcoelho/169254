@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/grvcoelho/169254/handlers"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"
 	"github.com/kataras/iris/middleware/recover"
@@ -32,10 +33,10 @@ func (s *Server) initMiddlewares() {
 }
 
 func (s *Server) initHandlers() {
-	s.app.Get("/_health_check", func(ctx iris.Context) {
-		ctx.StatusCode(200)
-		ctx.WriteString("ok")
-	})
+	s.app.Get(
+		"/_health_check",
+		handlers.NewHealth().Get,
+	)
 }
 
 func (s *Server) Start() {
