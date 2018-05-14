@@ -1,22 +1,22 @@
 package kv
 
-type KVStore struct {
+type Store struct {
 	Root *Node
 }
 
-func NewKVStore() *KVStore {
+func NewStore() *Store {
 	root := NewNode(nil)
 
-	return &KVStore{
+	return &Store{
 		Root: root,
 	}
 }
 
-func (s *KVStore) Put(key, value string) error {
+func (s *Store) Put(key, value string) error {
 	return s.Root.Put(key, value)
 }
 
-func (s *KVStore) Get(key string) (interface{}, bool) {
+func (s *Store) Get(key string) (interface{}, bool) {
 	child, ok := s.Root.Get(key)
 
 	if !ok {
