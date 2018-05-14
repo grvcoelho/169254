@@ -39,6 +39,10 @@ func NewMetadata() *Metadata {
 	}
 }
 
+func (m *Metadata) Index(ctx iris.Context) {
+	ctx.StatusCode(404)
+}
+
 func (m *Metadata) Get(ctx iris.Context) {
 	param := ctx.Params().Get("key")
 	value, ok := m.kv.Get(param)

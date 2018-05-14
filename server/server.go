@@ -39,6 +39,10 @@ func (s *Server) initHandlers() {
 	)
 
 	s.app.Get(
+		"/",
+		handlers.NewMetadata().Index,
+	)
+	s.app.Get(
 		"/{key:path}",
 		handlers.NewMetadata().Get,
 	)
