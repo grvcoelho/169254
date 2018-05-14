@@ -17,7 +17,7 @@ func New() *Server {
 
 	server := &Server{
 		app:  app,
-		port: "8080",
+		port: "80",
 	}
 
 	server.initMiddlewares()
@@ -45,5 +45,5 @@ func (s *Server) initHandlers() {
 }
 
 func (s *Server) Start() {
-	s.app.Run(iris.Addr(":8080"))
+	s.app.Run(iris.Addr(":" + s.port))
 }
