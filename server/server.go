@@ -37,6 +37,11 @@ func (s *Server) initHandlers() {
 		"/_health_check",
 		handlers.NewHealth().Get,
 	)
+
+	s.app.Get(
+		"/{key:path}",
+		handlers.NewMetadata().Get,
+	)
 }
 
 func (s *Server) Start() {
