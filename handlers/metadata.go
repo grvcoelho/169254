@@ -40,7 +40,9 @@ func NewMetadata() *Metadata {
 }
 
 func (m *Metadata) Index(ctx iris.Context) {
-	ctx.StatusCode(404)
+	keys := m.kv.Root.ListKeys()
+	res := strings.Join(keys, "\n")
+	ctx.WriteString(res)
 }
 
 func (m *Metadata) Get(ctx iris.Context) {
